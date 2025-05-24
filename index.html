@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NightShoppers - Coming Soon</title>
-  <!-- Import Google Font for "Coming soon..." -->
-  <link href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+TC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+TC&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 0 1rem;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #ffffff;
       color: #000000;
@@ -19,18 +18,53 @@
       align-items: center;
       height: 100vh;
       text-align: center;
+      overflow: hidden;
+      position: relative;
+      box-sizing: border-box;
     }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: move 40s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes move {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
+    }
+
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     h1 {
-      font-size: 3em;
+      font-size: clamp(2rem, 5vw, 3em);
       margin: 0.5em 0;
       letter-spacing: 0.15em;
+      opacity: 0;
+      animation: fadeSlideUp 1s ease forwards;
     }
+
     p {
       font-family: 'WDXL Lubrifont TC', sans-serif;
-      font-size: 1.5em;
+      font-size: clamp(1rem, 3vw, 1.5em);
       color: #000000;
       letter-spacing: 0.10em;
-
+      opacity: 0;
+      animation: fadeSlideUp 1s ease forwards;
+      animation-delay: 0.5s;
     }
   </style>
 </head>
